@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    networks:
+      - prompt-vault-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - DATABASE_URL=postgresql://promptvault:password@db:5432/promptvault
+      - CORS_ORIGINS=http://localhost:3000
+    depends_on:
+      - db
+    networks:
+      - prompt-vault-network
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=promptvault
+      - POSTGRES_USER=promptvault
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init:/docker-entrypoint-initdb.d
+    networks:
+      - prompt-vault-network
+
+volumes:
+  postgres_data:
+
+networks:
+  prompt-vault-network:
+    driver: bridge 
