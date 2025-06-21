@@ -25,29 +25,29 @@ const PromptCard = ({ prompt, onEdit, onDelete }) => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+    <div className="bg-gray-800 rounded-lg shadow-sm border border-gray-700 p-6 hover:shadow-md transition-shadow">
       <div className="flex justify-between items-start mb-4">
-        <h3 className="text-lg font-semibold text-gray-900 flex-1 mr-4">
+        <h3 className="text-lg font-semibold text-white flex-1 mr-4">
           {prompt.title}
         </h3>
         <div className="flex items-center space-x-2">
           <button
             onClick={handleCopy}
-            className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+            className="p-2 text-gray-300 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
             title="Copy content"
           >
             <Copy className="h-4 w-4" />
           </button>
           <button
             onClick={() => onEdit(prompt)}
-            className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+            className="p-2 text-gray-300 hover:text-blue-400 hover:bg-gray-700 rounded-lg transition-colors"
             title="Edit prompt"
           >
             <Edit2 className="h-4 w-4" />
           </button>
           <button
             onClick={() => onDelete(prompt.id)}
-            className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+            className="p-2 text-gray-300 hover:text-red-400 hover:bg-gray-700 rounded-lg transition-colors"
             title="Delete prompt"
           >
             <Trash2 className="h-4 w-4" />
@@ -56,7 +56,7 @@ const PromptCard = ({ prompt, onEdit, onDelete }) => {
       </div>
 
       <div className="mb-4">
-        <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">
+        <p className="text-gray-100 whitespace-pre-wrap leading-relaxed">
           {prompt.content}
         </p>
       </div>
@@ -66,7 +66,7 @@ const PromptCard = ({ prompt, onEdit, onDelete }) => {
           {prompt.tags.map((tag) => (
             <span
               key={tag}
-              className="inline-block bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-sm"
+              className="inline-block bg-gray-700 text-gray-200 px-2 py-1 rounded-md text-sm"
             >
               {tag}
             </span>
@@ -74,7 +74,7 @@ const PromptCard = ({ prompt, onEdit, onDelete }) => {
         </div>
       )}
 
-      <div className="flex items-center justify-between text-sm text-gray-500">
+      <div className="flex items-center justify-between text-sm text-gray-400">
         <div className="flex items-center">
           <Calendar className="h-4 w-4 mr-1" />
           <span>Created {formatDate(prompt.created_at)}</span>
@@ -85,7 +85,7 @@ const PromptCard = ({ prompt, onEdit, onDelete }) => {
       </div>
 
       {copied && (
-        <div className="absolute top-2 right-2 bg-green-100 text-green-800 px-2 py-1 rounded text-sm">
+        <div className="absolute top-2 right-2 bg-green-900 text-green-200 px-2 py-1 rounded text-sm">
           Copied!
         </div>
       )}

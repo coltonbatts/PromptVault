@@ -22,11 +22,11 @@ const TagFilter = ({ availableTags, selectedTags, onTagsChange }) => {
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-medium text-gray-700">Filter by tags:</h3>
+        <h3 className="text-sm font-medium text-gray-200">Filter by tags:</h3>
         {selectedTags.length > 0 && (
           <button
             onClick={clearAllTags}
-            className="text-sm text-gray-500 hover:text-gray-700 underline"
+            className="text-sm text-gray-400 hover:text-gray-200 underline"
           >
             Clear all
           </button>
@@ -43,8 +43,8 @@ const TagFilter = ({ availableTags, selectedTags, onTagsChange }) => {
               className={clsx(
                 "inline-flex items-center px-3 py-1 rounded-full text-sm font-medium transition-colors",
                 isSelected
-                  ? "bg-blue-100 text-blue-800 hover:bg-blue-200"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  ? "bg-blue-900 text-blue-200 hover:bg-blue-800"
+                  : "bg-gray-700 text-gray-200 hover:bg-gray-600"
               )}
             >
               {tag}
@@ -57,7 +57,7 @@ const TagFilter = ({ availableTags, selectedTags, onTagsChange }) => {
       </div>
       
       {selectedTags.length > 0 && (
-        <div className="text-sm text-gray-600">
+        <div className="text-sm text-gray-400">
           Filtering by {selectedTags.length} tag{selectedTags.length === 1 ? '' : 's'}
         </div>
       )}

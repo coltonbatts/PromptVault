@@ -23,6 +23,31 @@ body {
   line-height: 1.6;
 }
 
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  html.dark body {
+    background-color: #18181b;
+    color: #f4f4f5;
+  }
+}
+
+/* Tailwind dark utility classes for custom elements */
+.dark .bg-white {
+  background-color: #27272a !important;
+}
+.dark .text-gray-900 {
+  color: #f4f4f5 !important;
+}
+.dark .text-gray-600 {
+  color: #a1a1aa !important;
+}
+.dark .bg-blue-600 {
+  background-color: #2563eb !important;
+}
+.dark .bg-blue-700 {
+  background-color: #1d4ed8 !important;
+}
+
 /* Custom scrollbar styles */
 ::-webkit-scrollbar {
   width: 8px;
